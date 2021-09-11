@@ -1,7 +1,7 @@
-import { ISecurity } from "../ISecurity";
+import { ISecurityHelper } from "../ISecurityHelper";
 import bcrypt from 'bcryptjs';
 
-export class Security implements ISecurity {
+export class SecurityHelper implements ISecurityHelper {
     generateHashPassword(password: string): string {
         return bcrypt.hashSync(password, 8);
     }
