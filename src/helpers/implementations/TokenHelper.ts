@@ -6,4 +6,7 @@ export class TokenHelper implements ITokenHelper {
         return jwt.sign({ userId }, process.env.TOKEN_SECRET, { expiresIn: '1d' });
     }
 
+    isValid(token: string) {
+        jwt.verify(token, process.env.TOKEN_SECRET);
+    }
 }
