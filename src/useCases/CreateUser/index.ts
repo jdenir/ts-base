@@ -1,11 +1,14 @@
+import { Security } from "../../helpers/implementations/Security";
 import { UsersRepository } from "../../repositories/implementations/UsersRepository";
 import { CreateUserController } from "./CreateUserController";
 import { CreateUserUseCase } from "./CreateUserUseCase";
 
-const usersRepositoryMySQL = new UsersRepository();
+const usersRepository = new UsersRepository();
+
+const security = new Security();
 
 const createUserUseCase = new CreateUserUseCase(
-    usersRepositoryMySQL
+    usersRepository, security
 );
 
 const createUserController = new CreateUserController(

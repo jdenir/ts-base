@@ -1,4 +1,4 @@
-import { User } from "../../entities/User";
+import { User } from "../../models/User";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { IGetUserByEmailDTO } from "./GetUserByEmailDTO";
 

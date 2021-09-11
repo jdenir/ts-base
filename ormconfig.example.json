@@ -1,7 +1,7 @@
 {
     "name": "default",
     "type": "sqlite",
-    "database": "teste",
+    "database": "teste.db",
     "synchronize": true,
     "logging": false,
     "entities": [
