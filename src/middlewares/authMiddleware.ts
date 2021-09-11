@@ -1,11 +1,7 @@
 import { NextFunction, Request, Response } from "express";
-import jwt from "jsonwebtoken";
+import { TokenHelper } from "../helpers/implementations/TokenHelper";
 
-interface TokenPayload {
-    userId: string;
-    iat: number;
-    exp: number;
-}
+const tokenHelper = new TokenHelper();
 
 export default function authMiddleware(req: Request, res: Response, next: NextFunction) {
     const { authorization } = req.headers
@@ -14,9 +10,7 @@ export default function authMiddleware(req: Request, res: Response, next: NextFu
     const token = authorization.replace('Bearer', '').trim();
 
     try {
-        const data = jwt.verify(token, process.env.TOKEN_SECRET);
-        const { userId } = data as TokenPayload;
-        req.userId = userId;
+        req.userId = tokenHelper.getUserId(token);
         return next();
     } catch {
         return res.sendStatus(401);
