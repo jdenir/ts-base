@@ -9,6 +9,7 @@ export class GetUserByEmailUseCase {
 
     async execute(data: IGetUserByEmailDTO): Promise<User> {
         const user = await this.usersRepository.findByEmail(data.email);
+        delete user.password;
         return user;
     }
 }

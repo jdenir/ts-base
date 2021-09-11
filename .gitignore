@@ -44,3 +44,4 @@ yarn.lock
 dist
 ormconfig.json
 teste
+teste.db
