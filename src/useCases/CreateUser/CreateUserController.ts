@@ -7,11 +7,11 @@ export class CreateUserController {
     ) { }
 
     async handle(req: Request, res: Response): Promise<Response> {
-        const { name, email, password } = req.body;
+        const { name, email, password, roleId } = req.body;
 
         try {
             await this.createUserUseCase.execute({
-                name, email, password
+                name, email, password, roleId
             });
 
             return res.status(201).send();

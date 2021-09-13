@@ -12,4 +12,9 @@ export class UsersRepository implements IUsersRepository {
         const userA = await getRepository(User).save(getRepository(User).create(user));
         console.log(userA);
     }
+
+    async findById(id: number): Promise<User> {
+        const user = await getRepository(User).findOneOrFail({ id: id }, { relations: ['roles'] });
+        return user;
+    }
 }

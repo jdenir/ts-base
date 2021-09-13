@@ -1,9 +1,10 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Role } from "./Role";
 
 @Entity({ name: 'users' })
 export class User {
     @PrimaryGeneratedColumn()
-    public readonly id: number;
+    public id: number;
 
     @Column()
     public name: string;
@@ -14,7 +15,10 @@ export class User {
     @Column()
     public password: string;
 
-    constructor(props: Omit<User, 'id'>, id?: string) {
+    @ManyToOne(() => Role, role => role.users)
+    public role: Role;
+
+    constructor(props: Omit<User, 'id'>) {
         Object.assign(this, props);
     }
 }
