@@ -8,6 +8,7 @@ export const roleMiddleware = (roles: Array<string>) => {
         const userId = req.userId;
 
         try {
+            console.log(userId)
             const user = await userRepository.findById(userId);
             if (roles.indexOf(user.role.name) > -1) next();
             else res.status(401).send();

@@ -14,7 +14,7 @@ export class UsersRepository implements IUsersRepository {
     }
 
     async findById(id: number): Promise<User> {
-        const user = await getRepository(User).findOneOrFail({ id: id }, { relations: ['roles'] });
+        const user = await getRepository(User).findOneOrFail({ id }, { relations: ["role"] });
         return user;
     }
 }
